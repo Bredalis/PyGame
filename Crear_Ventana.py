@@ -1,27 +1,20 @@
 
-import pygame
-
-# Iniciar libreria
-
-pygame.init()
-pygame.display.set_caption('Juego 2D Con Python')
-
-# Propiedades de la ventana
-
-ancho = 800
-alto = 620
+from Estructura_Personaje import *
 
 # Crear ventana
 
-ventana = pygame.display.set_mode((ancho, alto))
+juego_1 = Jugador('Juego 2D Con Python', 50, 50)
+juego_1.iniciar_libreria()
+juego_1.poner_titulo()
+juego_1.crear_ventana(800, 620)
 
 run = True
 
 while run:
-	for evento in pygame.event.get():
 
-		# Cerrar la ventana al presionar la x
-		if evento.type == pygame.QUIT:
+	# Cerrar ventana al presionar x
+	for evento in pygame.event.get():
+		if evento.type ==  pygame.QUIT:
 			run = False
 
-pygame.quit()
+juego_1.cerrar_ventana()

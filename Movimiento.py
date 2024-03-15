@@ -1,79 +1,34 @@
 
-import pygame
-from Crear_Personajes import *
+from Estructura_Personaje import *
 
-# Iniciar libreria
+# Ingresar movimiento
 
-pygame.init()
-pygame.display.set_caption('Juego 2D Con Python')
-
-# Crear personaje
-
-jugador = Personaje(50, 50)
-
-# Variables de movimiento 
-# para el jugador
-
-mover_arriba = False 
-mover_abajo = False 
-mover_izquierda = False 
-mover_derecha = False 
-
-# Propiedades de la ventana
-
-ancho = 800
-alto = 620
-
-# Crear ventana
-
-ventana = pygame.display.set_mode((ancho, alto))
+juego_1 = Jugador('Juego 2D Con Python', 50, 50)
+juego_1.iniciar_libreria()
+juego_1.poner_titulo()
+juego_1.crear_ventana(400, 400)
 
 run = True
 
 while run:
 
-	# Calcular movimiento
-	# del jugador
+	# Rapidez del jugador
+	juego_1.rapidez(60)
+	juego_1.rellenar_color()
+	juego_1.calcular_movimiento()
+	juego_1.movimiento()
 
-	delta_x = 0
-	delta_y = 0
+	# Dibujar jugador
+	juego_1.dibujar_jugador()
 
-	if mover_derecha:
-		delta_x = 5
-
-	if mover_izquierda:
-		delta_x = -5
-
-	if mover_arriba:
-		delta_y = 5
-
-	if mover_abajo:
-		delta_y = -5
-
-	# Dibujar personaje
-	jugador.dibujar(ventana)
-
+	# Cerrar ventana al presionar x
 	for evento in pygame.event.get():
-
-		# Cerrar la ventana al presionar la x
-		if evento.type == pygame.QUIT:
+		if evento.type ==  pygame.QUIT:
 			run = False
 
-		# Si presiona una tecla
-		if evento.type == pygame.KEYDOWN:
-			if evento.key == pygame.K_a:
-				print('Izquierda')
+		juego_1.presionar_tecla(evento)
+		juego_1.despresionar_tecla(evento)
 
-			if evento.key == pygame.K_d:
-				print('Derecha')
+	juego_1.actualizar_ventana()
 
-			if evento.key == pygame.K_w:
-				print('Arriba')
-
-			if evento.key == pygame.K_s:
-				print('Abajo')
-
-	# Actualizar la pantalla
-	pygame.display.update()
-
-pygame.quit()
+juego_1.cerrar_ventana()
