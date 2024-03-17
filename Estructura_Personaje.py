@@ -6,7 +6,8 @@ class Jugador:
 		self.titulo = titulo
 		self.forma = pygame.Rect(0, 0, 20, 20) # Tamaño
 		self.forma.center = (x, y) # Posicion
-
+		self.voltear = False
+		
 		# Movimientos
 		self.mover_arriba = False 
 		self.mover_abajo = False 
@@ -31,6 +32,20 @@ class Jugador:
 	def dibujar_jugador(self):
 		pygame.draw.rect(self.ventana, (0, 255, 0), self.forma)
 
+	def obtener_img(self, url):
+		self.img_jugador = pygame.image.load(url)
+
+	def longitud_img(self, num):
+
+		self.ancho = self.img_jugador.get_width()
+		self.alto = self.img_jugador.get_height()
+
+		self.img_jugador = pygame.transform.scale(
+			self.img_jugador, (self.ancho * num, self.alto * num))		
+
+	def dibujar_animacion(self):
+		self.ventana.blit(self.img_jugador, self.forma)
+
 	def calcular_movimiento(self):
 
 		self.delta_x = 0
@@ -51,6 +66,17 @@ class Jugador:
 	def movimiento(self):
 		self.forma.x = self.forma.x + self.delta_x
 		self.forma.y = self.forma.y + self.delta_y
+
+	def movimiento_voltear(self):
+		if self.delta_x < 0:
+			self.voltear = True
+
+		if self.delta_y > 0:
+			self.voltear = False
+
+	def voltear_img(self):
+		self.img_volteada = pygame.transform.flip(self.img_jugador, self.voltear, False)
+		self.ventana.blit(self.img_volteada, self.forma)
 
 	def rapidez(self, cantidad):
 		self.reloj.tick(cantidad)
