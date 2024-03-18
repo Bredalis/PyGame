@@ -3,7 +3,7 @@ from Estructura_Personaje import *
 
 # Ingresar movimiento
 
-juego_1 = Jugador('Juego 2D Con Python', 50, 50)
+juego_1 = Jugador('Juego 2D - Animaciones', 50, 50)
 juego_1.iniciar_libreria()
 juego_1.poner_titulo()
 juego_1.crear_ventana(400, 400)
