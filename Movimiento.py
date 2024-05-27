@@ -13,15 +13,18 @@ run = True
 while run:
 
 	# Rapidez del jugador
+
 	juego_1.rapidez(60)
 	juego_1.rellenar_color()
 	juego_1.calcular_movimiento()
 	juego_1.movimiento()
 
 	# Dibujar jugador
+
 	juego_1.dibujar_jugador()
 
 	# Cerrar ventana al presionar x
+	
 	for evento in pygame.event.get():
 		if evento.type ==  pygame.QUIT:
 			run = False

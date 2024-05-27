@@ -9,12 +9,12 @@ class Jugador:
 		self.voltear = False
 		
 		# Movimientos
+
 		self.mover_arriba = False 
 		self.mover_abajo = False 
 		self.mover_izquierda = False 
 		self.mover_derecha = False
 
-		# Posiciones
 		self.reloj = pygame.time.Clock() 
 
 	def iniciar_libreria(self):
@@ -101,6 +101,7 @@ class Jugador:
 	def despresionar_tecla(self, evento):
 
 		# Si se suelta la tecla
+		
 		if evento.type == pygame.KEYUP:
 			if evento.key == pygame.K_a:
 				self.mover_izquierda = False

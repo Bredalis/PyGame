@@ -13,6 +13,7 @@ run = True
 while run:
 
 	# Cerrar ventana al presionar x
+	
 	for evento in pygame.event.get():
 		if evento.type ==  pygame.QUIT:
 			run = False

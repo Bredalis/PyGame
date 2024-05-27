@@ -13,9 +13,11 @@ run = True
 while run:
 
 	# Dibujar jugador
+
 	juego_1.dibujar_jugador()
 
 	# Cerrar ventana al presionar x
+	
 	for evento in pygame.event.get():
 		if evento.type ==  pygame.QUIT:
 			run = False
